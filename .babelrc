@@ -1,4 +1,12 @@
 {
   "presets": ["shopify/web", "babel-preset-env", "vue"],
-  "plugins": ["transform-async-to-generator"]
+  "plugins": ["transform-async-to-generator", 
+    [ "module-resolver", {
+      "alias": {
+        "@scripts": "./src/scripts",
+        "@styles": "./src/styles",
+        "@vue": "./src/vue"
+      }
+    }]
+  ]
 }
