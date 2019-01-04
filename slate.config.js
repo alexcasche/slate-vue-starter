@@ -21,7 +21,7 @@ const part = {
                 loader: 'vue-loader'
             },
             {
-                test: /.js$/,
+                test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/
             }
@@ -30,22 +30,6 @@ const part = {
     plugins: [
         new VueLoaderPlugin()
     ]
-};
-
-const styleLoader = {
-    loader: 'style-loader',
-    options: {
-        hmr: isDevelopment
-    }
-};
-
-const cssLoader = {
-    loader: 'css-loader',
-    // Enabling sourcemaps in styles when using HMR causes style-loader to inject
-    // styles using a <link> tag instead of <style> tag. This causes
-    // a FOUC content, which can cause issues with JS that is reading
-    // the DOM for styles (width, height, visibility) on page load.
-    options: {sourceMap: !isDevelopment}
 };
 
 const postcssLoader = {
@@ -59,13 +43,11 @@ const postcssLoader = {
 module.exports = {
     'webpack.extend': config => {
         const postCssRule = {
-            test: /\.pcss$/,
+            test: /\.css$/,
             exclude: config.get('webpack.commonExcludes')
         };
 
         postCssRule.use = [
-            ...(isDevelopment ? [styleLoader] : [MiniCssExtractPlugin.loader]),
-            cssLoader,
             postcssLoader
         ];
         part.module.rules.push(postCssRule);
