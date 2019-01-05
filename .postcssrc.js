@@ -3,12 +3,17 @@ module.exports = {
     "postcss-import": {
       path: "./src/styles"
     },
-    "postcss-nested": {},
     "postcss-preset-env": {},
+    'postcss-mixins': {},
+    "postcss-nested": {},
+    'postcss-simple-vars': {},
+    'postcss-custom-media': {},
     "postcss-custom-properties": {},
+    'postcss-color-function': {},
     precss: {},
     "postcss-flexbox": {},
     lost: {},
-    "postcss-utilities": {}
+    "postcss-utilities": {},
+    'postcss-automath': {}
   }
 }
